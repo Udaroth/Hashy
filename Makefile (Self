@@ -1,0 +1,12 @@
+
+output: hashmap.o hash_tests.o
+	clang hash_tests.o hashmap.o -o hashmap -fsanitize=address -g
+
+hashmap.o: hashmap.c hashmap.h
+	clang -c hashmap.c
+
+hash_tests.o: hash_tests.c hashmap.h
+	clang -c hash_tests.c
+
+clean:
+	rm *.o output
